@@ -25,7 +25,7 @@ module "ec2_private" {
   instance_type = var.instance_type
   key_name      = var.instance_keypair
   #monitoring             = true
-  subnet_id = element(module.vpc.private_subnets, count.index)
+  subnet_id              = element(module.vpc.private_subnets, count.index)
   vpc_security_group_ids = [module.private_sg.security_group_id]
   # count         = var.private_instance_count
   user_data = file("${path.module}/install.sh")
